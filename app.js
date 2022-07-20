@@ -44,13 +44,14 @@ let traerPerritos = (data) => {
                
                 let html = '';
                 html += '<tr>';
-                html += `<td><a href="${data.message}" target="_blank"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">${perro}
-                </button></a> </td>`
+                html += `<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="modal('${perro}','${data.message}')" >${perro}
+                </button> </td>`
                 html += `<td><img src="${data.message}" alt="" style="width:100px "></td>`
                 html += '</tr>';
         
-                $('.table').append(html)
              
+                $('.table').append(html)
+                
             })
             .fail(function () {
                 console.log("Fallo!");
@@ -59,8 +60,12 @@ let traerPerritos = (data) => {
      
 
     }
-
+             
 
 }
 
-
+//le paso al modal los valores recibidos en la funcion
+let modal = (raza,imagen)=>{
+    $('#tituloPerrito').html(raza)
+    $('#imagePerro').attr('src',imagen)
+}
